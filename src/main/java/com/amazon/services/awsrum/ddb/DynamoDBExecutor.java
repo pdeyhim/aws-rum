@@ -31,7 +31,7 @@ import com.amazonaws.services.kinesis.connectors.KinesisConnectorRecordProcessor
  */
 public class DynamoDBExecutor extends KinesisConnectorExecutor<KinesisMessageModel,Map<String,AttributeValue>> {
 
-    private static String configFile = "DynamoDBSample.properties";
+    private static String configFile = "DynamoDB.properties";
 
     /**
      * Creates a new DynamoDBExcecutor.

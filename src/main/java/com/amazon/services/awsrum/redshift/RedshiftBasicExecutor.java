@@ -23,7 +23,7 @@ import com.amazonaws.services.kinesis.connectors.KinesisConnectorRecordProcessor
  * The Executor for the basic Redshift emitter sample.
  */
 public class RedshiftBasicExecutor extends KinesisConnectorExecutor<KinesisMessageModel, byte[]> {
-    private static final String CONFIG_FILE = "RedshiftBasicSample.properties";
+    private static final String CONFIG_FILE = "Redshift.properties";
 
     /**
      * Creates a new RedshiftBasicExecutor.
