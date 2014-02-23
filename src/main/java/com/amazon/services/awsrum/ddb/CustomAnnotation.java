@@ -44,7 +44,7 @@ public class CustomAnnotation  implements Annotator {
 		this.hashKey = properties.getProperty("dynamoDBKey");
 		this.rangeKey = properties.getProperty("dynamoDBRangeKey");
 		
-		System.out.println("table name: "+tableName+" hashKey: "+hashKey);
+		//System.out.println("table name: "+tableName+" hashKey: "+hashKey);
 	}
 	
 	public void anyGetter(JMethod arg0) {
@@ -58,7 +58,7 @@ public class CustomAnnotation  implements Annotator {
 
 	public void enumCreatorMethod(JMethod arg0) {
 		// TODO Auto-generated method stub
-		System.out.println(arg0.name());
+		//System.out.println(arg0.name());
 		
 	}
 

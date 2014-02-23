@@ -8,4 +8,4 @@ java -cp target/amazon-rum-dynamodb-0.0.1-SNAPSHOT-jar-with-dependencies.jar:con
 echo "re-packaging\n"
 mvn compile assembly:single
 echo "Running DDB Connector"
-java -cp target/amazon-rum-dynamodb-0.0.1-SNAPSHOT-jar-with-dependencies.jar:conf/ com.amazon.services.awsrum.ddb.DynamoDBExecutor
+java -cp target/amazon-rum-dynamodb-0.0.1-SNAPSHOT-jar-with-dependencies.jar:conf/ $1
