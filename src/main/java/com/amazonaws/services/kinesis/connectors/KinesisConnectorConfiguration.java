@@ -75,6 +75,8 @@ public class KinesisConnectorConfiguration {
     public static final String PROP_CLOUDWATCH_MAX_QUEUE_SIZE = "cloudWatchMaxQueueSize";
     public static final String PROP_REDSHIFT_AccessKey="redshiftCopyAccesskey";
     public static final String PROP_REDSHIFT_AccessSecretKey="redshiftCopyAccessSecretKey";
+    private static final String DATA_JSON_SCHEMA_S3_KEY="dataJsonSchemaS3Key";
+    private static final String DATA_JSON_SCHEMA_S3_BUCKET="dataJsonSchemaS3Bucket";
 
     // Default Connector App Constants
     public static final String DEFAULT_APP_NAME = "KinesisConnector";
@@ -101,6 +103,8 @@ public class KinesisConnectorConfiguration {
     // Default S3 Constants
     public static final String DEFAULT_S3_ENDPOINT = "https://s3.amazonaws.com";
     public static final String DEFAULT_S3_BUCKET = "kinesis-bucket";
+    public static final String DEFAULT_DATA_JSON_SCHEMA_S3_KEY="/conf/schema.json";
+    public static final String DEFAULT_DATA_JSON_SCHEMA_S3_BUCKET=DEFAULT_S3_BUCKET;
 
     // Default Redshift Constants
     public static final String DEFAULT_REDSHIFT_ENDPOINT = "https://redshift.us-east-1.amazonaws.com";
@@ -158,6 +162,8 @@ public class KinesisConnectorConfiguration {
     public final int CLOUDWATCH_MAX_QUEUE_SIZE;
     public final String REDSHIFT_COPY_IAM_USER_ACCESSKEY;
     public final String REDSHIFT_COPY_IAM_USER_ACCESSSECRETKEY;
+    public final String JSON_SCHEMA_S3_KEY;
+    public final String JSON_SCHEMA_S3_BUCKET;
     
 
     /**
@@ -189,7 +195,12 @@ public class KinesisConnectorConfiguration {
         // S3 configuration
         S3_ENDPOINT = properties.getProperty(PROP_S3_ENDPOINT, DEFAULT_S3_ENDPOINT);
         S3_BUCKET = properties.getProperty(PROP_S3_BUCKET, DEFAULT_S3_BUCKET);
+        
+        //JSON Schema
 
+        JSON_SCHEMA_S3_KEY= properties.getProperty(DATA_JSON_SCHEMA_S3_KEY, DEFAULT_DATA_JSON_SCHEMA_S3_KEY);
+        JSON_SCHEMA_S3_BUCKET= properties.getProperty(DATA_JSON_SCHEMA_S3_BUCKET, DEFAULT_DATA_JSON_SCHEMA_S3_BUCKET);
+        
         // Redshift configuration
         REDSHIFT_ENDPOINT = properties.getProperty(PROP_REDSHIFT_ENDPOINT, DEFAULT_REDSHIFT_ENDPOINT);
         REDSHIFT_USERNAME = properties.getProperty(PROP_REDSHIFT_USERNAME, DEFAULT_REDSHIFT_USERNAME);
