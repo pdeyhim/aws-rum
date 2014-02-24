@@ -73,6 +73,8 @@ public class KinesisConnectorConfiguration {
     public static final String PROP_CLOUDWATCH_NAMESPACE = "cloudWatchNamespace";
     public static final String PROP_CLOUDWATCH_BUFFER_TIME = "cloudWatchBufferTime";
     public static final String PROP_CLOUDWATCH_MAX_QUEUE_SIZE = "cloudWatchMaxQueueSize";
+    public static final String PROP_REDSHIFT_AccessKey="redshiftCopyAccesskey";
+    public static final String PROP_REDSHIFT_AccessSecretKey="redshiftCopyAccessSecretKey";
 
     // Default Connector App Constants
     public static final String DEFAULT_APP_NAME = "KinesisConnector";
@@ -154,6 +156,8 @@ public class KinesisConnectorConfiguration {
     public final String CLOUDWATCH_NAMESPACE;
     public final long CLOUDWATCH_BUFFER_TIME;
     public final int CLOUDWATCH_MAX_QUEUE_SIZE;
+    public final String REDSHIFT_COPY_IAM_USER_ACCESSKEY;
+    public final String REDSHIFT_COPY_IAM_USER_ACCESSSECRETKEY;
     
 
     /**
@@ -199,6 +203,8 @@ public class KinesisConnectorConfiguration {
                 DEFAULT_REDSHIFT_DATA_DELIMITER, properties);
         REDSHIFT_COPY_MANDATORY = getBooleanProperty(PROP_REDSHIFT_COPY_MANDATORY,
                 DEFAULT_REDSHIFT_COPY_MANDATORY, properties);
+        REDSHIFT_COPY_IAM_USER_ACCESSKEY = properties.getProperty(PROP_REDSHIFT_AccessKey);
+        REDSHIFT_COPY_IAM_USER_ACCESSSECRETKEY = properties.getProperty(PROP_REDSHIFT_AccessSecretKey);
 
         // DynamoDB configuration
         DYNAMODB_ENDPOINT = properties.getProperty(PROP_DYNAMODB_ENDPOINT, DEFAULT_DYNAMODB_ENDPOINT);

@@ -30,7 +30,7 @@ public class GenerateKinesisMessageModel {
 		JCodeModel codeModel = new JCodeModel();
       
         
-        File schemaFile = new File("conf/browserschema.json");
+        File schemaFile = new File(args[1]);
           
         new SchemaMapper(new RuleFactory(new Arguments(), new CompositeAnnotator(new Jackson2Annotator(), new CustomAnnotation(configFile)), new SchemaStore()), new SchemaGenerator()).generate(codeModel, "KinesisMessageModel", "com.amazon.services.awsrum.kinesis", schemaFile.toURL()); 
        

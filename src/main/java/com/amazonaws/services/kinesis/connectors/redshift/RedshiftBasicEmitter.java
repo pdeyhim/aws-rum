@@ -67,8 +67,9 @@ public class RedshiftBasicEmitter extends S3Emitter {
         loginProperties = new Properties();
         loginProperties.setProperty("user", configuration.REDSHIFT_USERNAME);
         loginProperties.setProperty("password", configuration.REDSHIFT_PASSWORD);
-        accessKey = configuration.AWS_CREDENTIALS_PROVIDER.getCredentials().getAWSAccessKeyId();
-        secretKey = configuration.AWS_CREDENTIALS_PROVIDER.getCredentials().getAWSSecretKey();
+        accessKey = configuration.REDSHIFT_COPY_IAM_USER_ACCESSKEY;
+        secretKey = configuration.REDSHIFT_COPY_IAM_USER_ACCESSSECRETKEY;
+       
     }
 
     @Override
