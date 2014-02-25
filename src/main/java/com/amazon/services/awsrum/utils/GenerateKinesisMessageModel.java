@@ -59,7 +59,7 @@ public class GenerateKinesisMessageModel {
 		JCodeModel codeModel = new JCodeModel();
         new SchemaMapper(new RuleFactory(new Arguments(), new CompositeAnnotator(new Jackson2Annotator(), new CustomAnnotation(configFile)), new SchemaStore()), new SchemaGenerator()).generate(codeModel, "KinesisMessageModel", "com.amazon.services.awsrum.kinesis", f.toURL()); 
      
-        File sourceFileDir=new File("./src/");
+        File sourceFileDir=new File("./src/main/java");
         codeModel.build(sourceFileDir);
       
 	}
