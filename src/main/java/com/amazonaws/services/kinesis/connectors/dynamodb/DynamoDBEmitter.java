@@ -77,6 +77,7 @@ public class DynamoDBEmitter implements IEmitter<KinesisMessageModel> {
 	       
 	      }
         } catch (AmazonClientException e){
+        	e.printStackTrace();
         	failedItems.add(message);
         }
         

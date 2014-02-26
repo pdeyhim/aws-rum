@@ -60,7 +60,7 @@ public class KinesisMessageModelRedshiftTransformer extends RedshiftTransformer<
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("csv: "+str);
+		//System.out.println("csv: "+str);
     	return str;
     }
 

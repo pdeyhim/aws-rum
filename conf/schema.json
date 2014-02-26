@@ -4,7 +4,7 @@
 	"id": "http://jsonschema.net",
 	"required":false,
 	"properties":{
-		"connectEnd2": {
+		"connectEnd": {
 			"type":"number",
 			"id": "http://jsonschema.net/connectEnd",
 			"required":false

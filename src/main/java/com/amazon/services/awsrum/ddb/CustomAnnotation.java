@@ -91,10 +91,14 @@ public class CustomAnnotation  implements Annotator {
 	}
 
 	public void propertySetter(JMethod arg0, String arg1) {
-		// TODO Auto-generated method stub]]
+		//arg0.annotate(DynamoDBTable.class).param("parviz", "parviz");
 		if (arg1.equals(hashKey)){
 			arg0.annotate(DynamoDBHashKey.class);
-		}else{
+		}
+		if (arg1.equals(rangeKey)){
+			arg0.annotate(DynamoDBRangeKey.class);
+		}
+		else{
 		arg0.annotate(DynamoDBAttribute.class);
 		}
 	}
