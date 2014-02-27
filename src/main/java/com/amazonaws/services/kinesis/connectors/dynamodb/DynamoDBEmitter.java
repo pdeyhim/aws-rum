@@ -74,7 +74,7 @@ public class DynamoDBEmitter implements IEmitter<KinesisMessageModel> {
         KinesisMessageModel message = null;
         try {
         	mapper.batchSave(items);
-        	LOG.info("Successfully emitted ");
+        	LOG.info("Successfully emitted: " +items.size()+" items");
         
         } catch (AmazonClientException e){
         	e.printStackTrace();
