@@ -33,6 +33,7 @@ import com.amazon.services.awsrum.kinesis.KinesisMessageModel;
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper.FailedBatch;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.BatchWriteItemRequest;
 import com.amazonaws.services.dynamodbv2.model.BatchWriteItemResult;
@@ -66,6 +67,32 @@ public class DynamoDBEmitter implements IEmitter<KinesisMessageModel> {
     @Override
     public List<KinesisMessageModel> emit(final UnmodifiableBuffer<KinesisMessageModel> buffer) {
         List<KinesisMessageModel> items = buffer.getRecords();
+       List<KinesisMessageModel> failedItems = new ArrayList<KinesisMessageModel>();
+      // failedItems.
+        
+        DynamoDBMapper mapper = new DynamoDBMapper(dynamoDBClient);
+        KinesisMessageModel message = null;
+        try {
+        	mapper.batchSave(items);
+        	LOG.info("Successfully emitted ");
+        
+        } catch (AmazonClientException e){
+        	e.printStackTrace();
+        	
+        	//
+        }
+        
+      //LOG.info("Successfully emitted " + (items.size() - failedItems.size()) + " records into DynamoDB.");
+        //failedItems.
+        //return failedItems;
+        
+       return failedItems;
+    }
+    
+    /*
+    @Override
+    public List<KinesisMessageModel> emit(final UnmodifiableBuffer<KinesisMessageModel> buffer) {
+        List<KinesisMessageModel> items = buffer.getRecords();
         List<KinesisMessageModel> failedItems = new ArrayList<KinesisMessageModel>();
         
         DynamoDBMapper mapper = new DynamoDBMapper(dynamoDBClient);
@@ -74,6 +101,7 @@ public class DynamoDBEmitter implements IEmitter<KinesisMessageModel> {
 	      for (KinesisMessageModel k:items){
 	    	message = k;
 	        mapper.save(k);
+	       
 	       
 	      }
         } catch (AmazonClientException e){
@@ -84,7 +112,8 @@ public class DynamoDBEmitter implements IEmitter<KinesisMessageModel> {
         LOG.info("Successfully emitted " + (items.size() - failedItems.size()) + " records into DynamoDB.");
         
         return failedItems;
-    }
+      
+    }  */
 
     @Override
     public void fail(List<KinesisMessageModel> records) {
