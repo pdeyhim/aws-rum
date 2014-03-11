@@ -31,6 +31,8 @@ import org.apache.commons.logging.LogFactory;
 
 import com.amazon.services.awsrum.kinesis.KinesisMessageModel;
 import com.amazonaws.AmazonClientException;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBAsync;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBAsyncClient;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper.FailedBatch;
@@ -62,6 +64,7 @@ public class DynamoDBEmitter implements IEmitter<KinesisMessageModel> {
         // Client
         this.dynamoDBClient = new AmazonDynamoDBClient(configuration.AWS_CREDENTIALS_PROVIDER);
         this.dynamoDBClient.setEndpoint(this.dynamoDBEndpoint);
+        
     }
 
     @Override
@@ -71,6 +74,9 @@ public class DynamoDBEmitter implements IEmitter<KinesisMessageModel> {
       // failedItems.
         
         DynamoDBMapper mapper = new DynamoDBMapper(dynamoDBClient);
+        
+        
+       
         KinesisMessageModel message = null;
         try {
         	mapper.batchSave(items);
